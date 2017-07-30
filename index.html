@@ -17,7 +17,6 @@
             <div class="display">
                 <div class="clear">
                     <button class="clean-screen" @click="cleanScreen">C</button>
-                    <!-- <button class="back-space" @click="backSpace">&lArr;</button> -->
                 </div>
                 <div class="screen">
                     <p>{{screenData || "0"}}</p>
@@ -33,6 +32,7 @@
                 </div>
                 <div class="numbers">
                     <button v-for="(number, index) in numbers" @click="displayOnScreen(number)">{{number}}</button>
+                    <button class="back-space" @click="backSpace">&lArr;</button>
                     <button class="equals" @click="equals()">=</button>
                 </div>
             </div>
@@ -49,7 +49,7 @@ var app = new Vue({
     },
     methods: {
         displayOnScreen(data) {
-            if(this.screenData.length && data === "("){
+            if (this.screenData.length && data === "(") {
                 var data = "*(";
             }
             if (this.isEqual) {
