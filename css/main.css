@@ -43,6 +43,7 @@ animation: AnimationName 30s ease infinite;
     display: flex;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .calculator {
