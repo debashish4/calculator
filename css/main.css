@@ -84,6 +84,7 @@ animation: AnimationName 30s ease infinite;
 
 
 button {
+    font-family: 'Orbitron', sans-serif!important;
     width: 25vw;
     height: 25vw;
     display: inline-block;
