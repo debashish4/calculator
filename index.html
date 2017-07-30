@@ -17,7 +17,7 @@
             <div class="display">
                 <div class="clear">
                     <button class="clean-screen" @click="cleanScreen">C</button>
-                    <!-- <button class="back-space" @click="backSpace">backSpace</button> -->
+                    <!-- <button class="back-space" @click="backSpace">&lArr;</button> -->
                 </div>
                 <div class="screen">
                     <p>{{screenData || "0"}}</p>
@@ -26,9 +26,9 @@
             <div class="lower-block">
                 <div class="operations">
                     <button class="add" @click='displayOnScreen("+")'>+</button>
-                    <button class="subtract" @click='displayOnScreen("-")'>-</button>
-                    <button class="division" @click='displayOnScreen("/")'>/</button>
-                    <button class="multiplication" @click='displayOnScreen("*")'>*</button>
+                    <button class="subtract" @click='displayOnScreen("-")'>&minus;</button>
+                    <button class="division" @click='displayOnScreen("/")'>&divide;</button>
+                    <button class="multiplication" @click='displayOnScreen("*")'>&times;</button>
                     <button class="modulus" @click='displayOnScreen("%")'>%</button>
                 </div>
                 <div class="numbers">
