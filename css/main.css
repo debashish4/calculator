@@ -9,10 +9,6 @@ html {
     font-size: 10px;
 }
 
-
-
-
-
 @-webkit-keyframes AnimationName {
     0%{background-position:52% 0%}
     50%{background-position:49% 100%}
@@ -69,7 +65,7 @@ animation: AnimationName 30s ease infinite;
 
 .display .screen p{
     font-size: 2.6rem;
-    direction: rtl;
+    text-align: right;
     height: 100%;
     display: block;
     padding: 1rem;
