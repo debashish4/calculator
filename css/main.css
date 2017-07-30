@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif!important;
+    background: #e1eec3;
+    background: #3C3B3F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #605C3C, #3C3B3F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    transform: scale(0.9);
+    width: 100%;
+    background: #2c3e50;
+}
+
+.display {
+    position: relative;
+    width: 100vw;
+    height: 25vw;
+    background: #fff;
+}
+
+.display .screen {
+    display: block;
+    float: right;
+    height: 100%;
+    width: 75vw;
+}
+
+.display .screen p{
+    font-size: 2.6rem;
+    direction: rtl;
+    height: 100%;
+    display: block;
+    padding: 1rem;
+    max-width: 75vw;
+    max-height: 24vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.display .clear {
+    position: absolute;
+}
+
+
+button {
+    width: 25vw;
+    height: 25vw;
+    display: inline-block;
+    color: #fff;
+    font-size: 2rem;
+    float: left;
+    background: transparent;
+    border: none;
+    transition:background 300ms linear;
+}
+
+button:hover{
+    background:#f39c12;
+}
+
+.lower-block {
+    position: relative;
+}
+
+.operations {
+    width: 25vw;
+    display: inline-block;
+}
+
+.operations button {
+    background: #66819C;
+}
+
+.numbers {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+
+.clear button {
+    background: #50432C;
+}
+
+
+.equals {
+    width: 50vw;
+    background: #16a085;
+}

@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vue App</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script src="./scripts/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -13,26 +15,27 @@
     <div id="app">
         <div class="calculator">
             <div class="display">
+                <div class="clear">
+                    <button class="clean-screen" @click="cleanScreen">C</button>
+                    <!-- <button class="back-space" @click="backSpace">backSpace</button> -->
+                </div>
                 <div class="screen">
                     <p>{{screenData || "0"}}</p>
                 </div>
             </div>
-            <div class="numbers">
-                <button v-for="(number, index) in numbers" @click="displayOnScreen(number)">{{number}}</button>
-            </div>
-            <div class="clear">
-                <button @click="cleanScreen">Clear</button>
-                <button @click="backSpace">backSpace</button>
-            </div>
-            <div class="operations">
-                <button class="add" @click='add("+")'>+</button>
-                <button class="subtract" @click='subtract("-")'>-</button>
-                <button class="division" @click='division("/")'>/</button>
-                <button class="multiplication" @click='multiplication("*")'>*</button>
-                <button class="modulus" @click='modulus("%")'>%</button>
-            </div>
-            <div class="result">
-                <button class="equals" @click="equals()">=</button>
+            <div class="lower-block">
+                <div class="operations">
+                    <button class="add" @click='displayOnScreen("+")'>+</button>
+                    <button class="subtract" @click='displayOnScreen("-")'>-</button>
+                    <button class="division" @click='displayOnScreen("/")'>/</button>
+                    <button class="multiplication" @click='displayOnScreen("*")'>*</button>
+                    <button class="modulus" @click='modulus("%")'>%</button>
+                </div>
+                <div class="numbers">
+                    <button v-for="(number, index) in numbers" @click="displayOnScreen(number)">{{number}}</button>
+                     <button class="equals" @click="equals()">=</button>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -41,78 +44,48 @@
 var app = new Vue({
     el: '#app',
     data: {
-        numbers:[1,2,3,4,5,6,7,8,9,0,"."],
+        numbers: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "(", ")","."],
         screenData: "",
     },
     methods: {
         displayOnScreen(data) {
             this.screenData += data;
         },
-        cleanScreen(){
-           this.screenData = ""; 
+        cleanScreen() {
+            this.screenData = "";
         },
-        add(data){
+        add(data) {
             this.displayOnScreen(data);
         },
-        subtract(data){
+        subtract(data) {
             this.displayOnScreen(data);
         },
-        division(data){
+        division(data) {
             this.displayOnScreen(data);
         },
-        multiplication(data){
+        multiplication(data) {
             this.displayOnScreen(data);
         },
-        modulus(data){
+        modulus(data) {
             this.displayOnScreen(data);
         },
-        equals(){
+        leftParenthesis(data) {
+            this.displayOnScreen(data);
+        },
+        rightParenthesis(data) {
+            this.displayOnScreen(data);
+        },
+
+        equals() {
             var result = eval(this.screenData);
             this.screenData = result;
         },
-        backSpace(){
-         this.screenData = this.screenData.slice(0,this.screenData.length-1);
+        backSpace() {
+            this.screenData = this.screenData.slice(0, this.screenData.length - 1);
         }
     }
-       
+
 });
 </script>
-
-<style scoped>
-*{
-    margin: 0;
-    padding: 0;
-}
-    #app{
-        width:250px;
-        background: #f3f3f3;
-        border: 1px solid black;
-        min-height: 20vh;
-        max-height: 100vh;
-    }
-    .screen{
-        width:100%;
-        height: 50px;
-        background:#a5dca5;
-    }
-    button{
-        width:70px;
-        height:70px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        background: #efefef;
-    }
-    .clear button{
-        background: #ffd1d1;
-    }
-    .operations button{
-        background: #cbcbea;
-    }
-
-    .result .equals{
-        width: 100%;
-        background: #ffe3b1;
-    }
-</style>
 
 </html>
