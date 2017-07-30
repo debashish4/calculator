@@ -8,15 +8,35 @@ html {
     font-size: 10px;
 }
 
+
+
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+
+
 body {
     font-family: 'Orbitron', sans-serif!important;
-    background: #e1eec3;
-    background: #3C3B3F;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #605C3C, #3C3B3F);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(178deg, #5d4157, #5d4157, #fc4a1a, #f7b733, #e1eec3, #f05053, #22c1c3, #fdbb2d);
+background-size: 1600% 1600%;
+
+-webkit-animation: AnimationName 30s ease infinite;
+-moz-animation: AnimationName 30s ease infinite;
+animation: AnimationName 30s ease infinite;
 }
 
 #app {
