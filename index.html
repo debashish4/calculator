@@ -29,13 +29,12 @@
                     <button class="subtract" @click='displayOnScreen("-")'>-</button>
                     <button class="division" @click='displayOnScreen("/")'>/</button>
                     <button class="multiplication" @click='displayOnScreen("*")'>*</button>
-                    <button class="modulus" @click='modulus("%")'>%</button>
+                    <button class="modulus" @click='displayOnScreen("%")'>%</button>
                 </div>
                 <div class="numbers">
                     <button v-for="(number, index) in numbers" @click="displayOnScreen(number)">{{number}}</button>
-                     <button class="equals" @click="equals()">=</button>
+                    <button class="equals" @click="equals()">=</button>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -44,39 +43,26 @@
 var app = new Vue({
     el: '#app',
     data: {
-        numbers: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "(", ")","."],
+        numbers: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "(", ")", "."],
         screenData: "",
+        isEqual: false
     },
     methods: {
         displayOnScreen(data) {
-            this.screenData += data;
+            if (this.isEqual) {
+                this.isEqual = false;
+                this.screenData = "";
+                this.screenData += data;
+            } else {
+                this.screenData += data;
+            }
         },
         cleanScreen() {
             this.screenData = "";
         },
-        add(data) {
-            this.displayOnScreen(data);
-        },
-        subtract(data) {
-            this.displayOnScreen(data);
-        },
-        division(data) {
-            this.displayOnScreen(data);
-        },
-        multiplication(data) {
-            this.displayOnScreen(data);
-        },
-        modulus(data) {
-            this.displayOnScreen(data);
-        },
-        leftParenthesis(data) {
-            this.displayOnScreen(data);
-        },
-        rightParenthesis(data) {
-            this.displayOnScreen(data);
-        },
 
         equals() {
+            this.isEqual = true;
             var result = eval(this.screenData);
             this.screenData = result;
         },
