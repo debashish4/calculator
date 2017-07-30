@@ -49,6 +49,9 @@ var app = new Vue({
     },
     methods: {
         displayOnScreen(data) {
+            if(this.screenData.length && data === "("){
+                var data = "*(";
+            }
             if (this.isEqual) {
                 this.isEqual = false;
                 this.screenData = "";
