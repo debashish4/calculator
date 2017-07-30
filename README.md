@@ -1,6 +1,6 @@
 # Simple Calculator (Vue JS)
 
-This is very simple Calculator app created using vue js [vue js](https://vuejs.org/).
+This is very simple Calculator app created using [vue js](https://vuejs.org/).
 
 ## Getting Started
 No setup required.
