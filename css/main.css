@@ -161,6 +161,9 @@ button:hover {
     background: #16a085;
 }
 
+.is-invalid{
+    font-size: 2rem!important;
+}
 
 @media only screen and (min-width: 440px) {
     #app {
