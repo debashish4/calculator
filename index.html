@@ -20,8 +20,10 @@
                 </div>
                 <div class="screen">
                     <p>
-                    <span v-if= 'isInvalid' class="is-invalid">Please enter valid data</span>
-                    <span v-if= '!isInvalid'>{{screenData || "0"}}<span>
+                        <span v-if='isInvalid' class="is-invalid">Please enter valid data</span>
+                        <span v-if='!isAnyData' class="is-invalid">Enter Numbers first</span>
+                        <span v-if='!isInvalid || !isAnyData'>{{screenData}}<span>
+                        <span v-if='isPlaceHolder'>0</span>
                     </p>
                     
                 </div>
@@ -51,10 +53,14 @@ var app = new Vue({
         screenData: "",
         isEqual: false,
         isInvalid: false,
+        isAnyData: true,
+        isPlaceHolder: true,
     },
     methods: {
         displayOnScreen(data) {
             this.isInvalid = false;
+            this.isAnyData = true;
+            this.isPlaceHolder = false;
             if (this.screenData.length && data === "(") {
                 var data = "*(";
             }
@@ -68,11 +74,21 @@ var app = new Vue({
         },
         cleanScreen() {
             this.screenData = "";
+            this.isPlaceHolder = true;
+            this.isAnyData = true;
+            this.isInvalid = false;
         },
 
         equals() {
-            this.isEqual = true;
             let screenData = this.screenData;
+            if(!screenData.length){
+                this.isAnyData = false;
+                this.isPlaceHolder = false;
+                return;
+            }else{
+                this.isAnyData = true;
+            }
+            this.isEqual = true;
             
             try {
                 var result = eval(screenData);
