@@ -21,8 +21,8 @@
                 <div class="screen">
                     <p>
                         <span v-if='isInvalid' class="is-invalid">Please enter valid data</span>
-                        <span v-if='!isAnyData' class="is-invalid">Enter Numbers first</span>
-                        <span v-if='!isInvalid || !isAnyData'>{{screenData}}<span>
+                        <span v-if='enterNumberMsg' class="is-invalid">Enter Numbers first</span>
+                        <span v-if='!isInvalid || !enterNumberMsg'>{{screenData}}<span>
                         <span v-if='isPlaceHolder'>0</span>
                     </p>
                     
@@ -53,20 +53,20 @@ var app = new Vue({
         screenData: "",
         isEqual: false,
         isInvalid: false,
-        isAnyData: true,
+        enterNumberMsg: false,
         isPlaceHolder: true,
     },
     methods: {
         displayOnScreen(data) {
             this.isInvalid = false;
-            this.isAnyData = true;
+            this.enterNumberMsg = false;
             this.isPlaceHolder = false;
             if (this.screenData.length && data === "(") {
                 var data = "*(";
             }
             if (this.isEqual) {
                 this.isEqual = false;
-                this.screenData = "";
+                // this.screenData = "";
                 this.screenData += data;
             } else {
                 this.screenData += data;
@@ -75,29 +75,31 @@ var app = new Vue({
         cleanScreen() {
             this.screenData = "";
             this.isPlaceHolder = true;
-            this.isAnyData = true;
+            this.enterNumberMsg = false;
             this.isInvalid = false;
         },
 
         equals() {
             let screenData = this.screenData;
-            if(!screenData.length){
-                this.isAnyData = false;
+            if(!screenData){
+                console.log("inside");
+                this.enterNumberMsg = true;
                 this.isPlaceHolder = false;
+                this.screenData = "";
                 return;
             }else{
-                this.isAnyData = true;
+                this.enterNumberMsg = false;
             }
             this.isEqual = true;
             
             try {
-                var result = eval(screenData);
+                 screenData = eval(screenData);
             }
             catch(err){
-                var result = "";
+                 screenData = "";
                 this.isInvalid = true;
             }
-            this.screenData = result;
+            this.screenData = screenData;
         },
         backSpace() {
             this.screenData = this.screenData.slice(0, this.screenData.length - 1);
