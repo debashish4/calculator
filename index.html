@@ -65,9 +65,10 @@ var app = new Vue({
                 var data = "*(";
             }
             if (this.isEqual) {
-                this.isEqual = false;
                 // this.screenData = "";
                 this.screenData += data;
+                this.isEqual = false;
+                this.isPlaceHolder = false;
             } else {
                 this.screenData += data;
             }
@@ -81,8 +82,9 @@ var app = new Vue({
 
         equals() {
             let screenData = this.screenData;
+
             if(!screenData){
-                console.log("inside");
+                this.isInvalid = false;
                 this.enterNumberMsg = true;
                 this.isPlaceHolder = false;
                 this.screenData = "";
@@ -90,7 +92,6 @@ var app = new Vue({
             }else{
                 this.enterNumberMsg = false;
             }
-            this.isEqual = true;
             
             try {
                  screenData = eval(screenData);
@@ -99,7 +100,8 @@ var app = new Vue({
                  screenData = "";
                 this.isInvalid = true;
             }
-            this.screenData = screenData;
+            this.screenData = screenData.toString();
+            this.isEqual = true;
         },
         backSpace() {
             this.screenData = this.screenData.slice(0, this.screenData.length - 1);
