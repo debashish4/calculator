@@ -105,6 +105,9 @@ var app = new Vue({
         },
         backSpace() {
             this.screenData = this.screenData.slice(0, this.screenData.length - 1);
+            if(!this.screenData){
+                this.isPlaceHolder = true;
+            }
         }
     }
 
