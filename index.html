@@ -62,6 +62,8 @@ var app = new Vue({
             this.isPlaceHolder = false;
             if (this.screenData.length && data === "(") {
                 var data = "*(";
+            }else if(this.screenData.length && data === ")") {
+                var data = ")*";
             }
             if (this.isEqual) {
                 // this.screenData = "";
