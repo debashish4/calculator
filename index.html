@@ -20,7 +20,7 @@
                 </div>
                 <div class="screen">
                     <p>
-                        <span v-if='isInvalid' class="is-invalid">Enter valid number</span>
+                        <span v-if='isInvalid' class="is-invalid">Wrong expression</span>
                         <span v-if='enterNumberMsg' class="is-invalid">Enter numbers first</span>
                         <span v-if='!isInvalid || !enterNumberMsg'>{{screenData}}<span>
                         <span v-if='isPlaceHolder'>0</span>
