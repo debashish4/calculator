@@ -56,14 +56,35 @@ var app = new Vue({
         isPlaceHolder: true,
     },
     methods: {
+        isOperator(value) {
+            switch(value){
+                case "-": {
+                    return true;
+                };
+                case "+": {
+                    return true;
+                };                
+                default: {  
+                    return false;
+                };
+            }
+        },
         displayOnScreen(data) {
             this.isInvalid = false;
             this.enterNumberMsg = false;
             this.isPlaceHolder = false;
-            if (this.screenData.length && data === "(") {
-                var data = "*(";
-            }else if(this.screenData.length && data === ")") {
-                var data = ")*";
+
+            if (this.screenData.length && data === "(")  {
+                if(this.isOperator(this.screenData.charAt(this.screenData.length-1))){
+                    var data = "(";
+                }else{
+                    var data = "*(";
+                }
+
+            }else if(this.screenData.length && data == parseInt(data)) {
+                if(this.screenData.endsWith(")")){
+                    var data = `*${data}`;
+                }
             }
             if (this.isEqual) {
                 // this.screenData = "";
